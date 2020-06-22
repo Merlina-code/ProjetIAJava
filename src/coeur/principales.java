@@ -129,17 +129,16 @@ public class principales extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 320, 70));
@@ -157,9 +156,9 @@ public class principales extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabelNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabelNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +168,7 @@ public class principales extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 320, 80));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 320, 80));
 
         String Path=System.getProperty("user.dir");
         jLabelFond.setIcon(new javax.swing.ImageIcon(Path+"\\src\\images\\fondo1.png"));
@@ -189,12 +188,13 @@ public class principales extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendActionPerformed
-
+      
         try {
             SoundCreatorText(jComboBoxChoose.getSelectedItem().toString());
         } catch (IOException ex) {
             Logger.getLogger(principales.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
 
     }//GEN-LAST:event_jButtonSendActionPerformed
     public void SoundCreatorText(String name ) throws IOException
@@ -202,10 +202,10 @@ public class principales extends javax.swing.JFrame {
         Sonotheque son=new Sonotheque(name);
         
         jLabelUser.setText("<html>Lecture du fichier WAV "+name+"<br>"+ "Frequence: "+son.frequence+"<br>"+"échantillons à "+son.length+"</html>");
-        jLabelNetwork.setText("<html>Note: "+son.Note.Nom+"<br> Frequence: "+son.Note.getFreq()+"<br>Touche: "+son.Note.getTouche()+"</html>");
+        jLabelNetwork.setText("<html>Note: "+son.Note.Nom+"<br> Frequence: "+son.Note.getFreq()+"Hz<br>Touche: "+son.Note.getTouche()+"</html>");
         String Path =System.getProperty("user.dir");
         FileWriter fichero = new FileWriter(Path+"\\piano.txt");
-            fichero.write(String.valueOf("Note:"+son.Note.Nom+" \tFrequence: "+son.Note.getFreq()+"\tTouche: "+son.Note.getTouche()+"\n"));
+            fichero.write(String.valueOf("Note:"+son.Note.Nom+" \tFrequence: "+son.Note.getFreq()+"Hz \tTouche: "+son.Note.getTouche()+"\n"));
             fichero.close();
         
         
